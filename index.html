@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Aim Financial Solutions — Invoice Finance &amp; Business Funding</title>
+<style>
+  :root{
+    --bg:#080a1c;
+    --bg-2:#0b0d24;
+    --panel:#12142f;
+    --panel-2:#181b3d;
+    --navy:#201d51;
+    --line:rgba(255,255,255,.08);
+    --line-2:rgba(255,255,255,.15);
+    --text:#f1f2fa;
+    --muted:#a3a8c6;
+    --muted-2:#6b7096;
+    --red:#d81f3e;
+    --red-deep:#b30f2a;
+    --red-soft:rgba(216,31,62,.16);
+    --blue:#4f6bff;
+    --radius:22px;
+    --radius-lg:30px;
+    --maxw:1180px;
+    --ff:"Inter","Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    background:var(--bg);color:var(--text);font-family:var(--ff);
+    line-height:1.55;overflow-x:hidden;letter-spacing:-.01em;-webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 22px}
+  section{position:relative}
+
+  h1,h2,h3{font-weight:800;letter-spacing:-.035em;line-height:1.02}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:700;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+    padding:7px 14px;border:1px solid var(--line);border-radius:100px;background:rgba(255,255,255,.02);
+  }
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--red);box-shadow:0 0 10px var(--red);animation:blink 2.4s ease-in-out infinite}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;font-size:15px;font-weight:700;
+    letter-spacing:-.01em;padding:14px 26px;border-radius:100px;border:1px solid transparent;cursor:pointer;
+    transition:transform .25s ease,background .25s ease,border-color .25s ease,box-shadow .25s ease;white-space:nowrap;
+  }
+  .btn-primary{background:var(--red);color:#fff;box-shadow:0 10px 30px -12px var(--red)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 44px -12px var(--red)}
+  .btn-ghost{background:rgba(255,255,255,.04);border-color:var(--line-2);color:var(--text)}
+  .btn-ghost:hover{background:rgba(255,255,255,.09);transform:translateY(-2px)}
+  .btn-light{background:#fff;color:var(--navy)}
+  .btn-light:hover{transform:translateY(-2px);box-shadow:0 16px 40px -14px rgba(255,255,255,.4)}
+
+  /* ---------- LOGO ---------- */
+  .logo{display:flex;align-items:center;gap:10px}
+  .logo svg{height:30px;width:auto;display:block}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:70;backdrop-filter:blur(16px);
+    background:linear-gradient(180deg,rgba(8,10,28,.92),rgba(8,10,28,.55));border-bottom:1px solid var(--line);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .nav-links{display:flex;align-items:center;gap:38px}
+  .nav-links a{color:var(--muted);font-size:15px;font-weight:700;letter-spacing:-.01em;transition:color .2s;position:relative}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--red);transition:width .28s ease}
+  .nav-links a:hover{color:var(--text)}
+  .nav-links a:hover::after{width:100%}
+  .burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px}
+  .burger span{width:24px;height:2.5px;background:var(--text);border-radius:2px}
+  @media(max-width:820px){.nav-links{display:none}.burger{display:flex}}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:64px 0 120px;overflow:hidden}
+  .glow{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+  .glow::before{
+    content:"";position:absolute;top:-260px;left:50%;transform:translateX(-50%);width:940px;height:580px;
+    background:radial-gradient(ellipse at center,rgba(216,31,62,.42),rgba(216,31,62,.1) 44%,transparent 68%);
+    filter:blur(22px);animation:pulseGlow 6s ease-in-out infinite;
+  }
+  .glow::after{
+    content:"";position:absolute;top:-160px;left:34%;width:560px;height:400px;
+    background:radial-gradient(ellipse at center,rgba(79,107,255,.26),transparent 64%);filter:blur(30px);
+    animation:pulseGlow 8s ease-in-out infinite reverse;
+  }
+  @keyframes pulseGlow{0%,100%{opacity:.75;transform:translateX(-50%) scale(1)}50%{opacity:1;transform:translateX(-50%) scale(1.06)}}
+  .glow::after{transform:none}
+  @keyframes pulseGlow2{0%,100%{opacity:.6}50%{opacity:.95}}
+
+  .circuit{position:absolute;top:140px;z-index:1;opacity:.7}
+  .circuit.left{left:0}
+  .circuit.right{right:0;transform:scaleX(-1)}
+  .pulse-dot{fill:var(--red);filter:drop-shadow(0 0 6px var(--red))}
+  .pulse-dot.b{fill:var(--blue);filter:drop-shadow(0 0 6px var(--blue))}
+  @media(max-width:1040px){.circuit{display:none}}
+
+  .hero-inner{position:relative;z-index:3;text-align:center;padding-top:34px}
+  .hero h1{font-size:clamp(38px,7.4vw,88px);max-width:15ch;margin:24px auto 0}
+  .hero h1 .thin{color:var(--muted);font-weight:700}
+  .hero h1 .red{color:var(--red)}
+  .hero p.sub{color:var(--muted);font-size:clamp(15px,2.2vw,19px);max-width:52ch;margin:22px auto 0;line-height:1.5}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center;margin:34px auto 0}
+  .enquiry{
+    display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.05);border:1px solid var(--line-2);
+    border-radius:100px;padding:6px 6px 6px 22px;backdrop-filter:blur(10px);width:min(490px,100%);
+    box-shadow:0 0 0 0 var(--red-soft);animation:ring 3.5s ease-in-out infinite;
+  }
+  @keyframes ring{0%,100%{box-shadow:0 0 0 0 rgba(216,31,62,0)}50%{box-shadow:0 0 0 5px rgba(216,31,62,.1)}}
+  .enquiry input{flex:1;min-width:0;background:none;border:0;outline:none;color:var(--text);font-family:var(--ff);font-size:15px;padding:12px 4px}
+  .enquiry input::placeholder{color:var(--muted-2)}
+  .enquiry .btn{padding:12px 22px}
+  .hero-badges{display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:center;margin:34px auto 0;color:var(--muted);font-size:13.5px;font-weight:600}
+  .hero-badges span{display:inline-flex;align-items:center;gap:8px}
+  .hero-badges .tick{color:var(--red);display:inline-flex}
+
+  /* hero decorative graphics — top-left + bottom-right, floating & faded */
+  .floaters{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+  .fc{position:absolute;background:linear-gradient(160deg,rgba(24,27,61,.9),rgba(12,14,34,.85));
+    border:1px solid var(--line-2);border-radius:16px;padding:16px 18px;
+    box-shadow:0 30px 60px -34px rgba(0,0,0,.9);backdrop-filter:blur(6px);opacity:.6}
+  .cl-tl-1{left:-6px;top:110px;width:230px;animation:floaty 7s ease-in-out infinite}
+  .cl-tl-2{left:64px;top:326px;width:236px;opacity:.4;animation:floaty 8.5s ease-in-out infinite .5s}
+  .cl-br-1{right:-78px;bottom:56px;width:418px;animation:floaty 9.5s ease-in-out infinite .3s}
+  .cl-br-2{right:150px;bottom:-30px;width:250px;opacity:.4;animation:floaty 8s ease-in-out infinite .7s}
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+
+  .row-head{display:flex;justify-content:space-between;align-items:flex-start}
+  .chip-up{font-size:11px;font-weight:800;color:#5fd39a;background:rgba(95,211,154,.14);padding:4px 9px;border-radius:100px;white-space:nowrap}
+  .legend{display:flex;gap:16px;margin-top:12px;flex-wrap:wrap}
+  .legend div{display:flex;align-items:center;gap:6px;font-size:10.5px;color:var(--muted);font-weight:600}
+  .legend i{width:8px;height:8px;border-radius:50%}
+  .mini-prof{display:flex;align-items:center;gap:10px;margin:12px 0}
+  .mini-prof .pa{width:32px;height:32px;border-radius:50%;background:linear-gradient(150deg,var(--red),var(--red-deep));display:grid;place-items:center;font-size:11px;font-weight:800;color:#fff}
+  .mini-prof .pn{font-size:13px;font-weight:700}
+  .mini-prof .ps{font-size:11px;color:#5fd39a;font-weight:600}
+  .split{display:flex;gap:16px}
+  .split div span{font-size:10px;color:var(--muted);display:block}
+  .split div b{font-size:14px}
+  .pos{color:#5fd39a}
+
+  /* tuck into corners as the viewport narrows, then retire on small screens */
+  @media(max-width:1200px){
+    .cl-tl-2,.cl-br-2{display:none}
+    .cl-tl-1{left:-28px;top:96px;width:206px}
+    .cl-br-1{right:-96px;bottom:44px;width:352px}
+  }
+  @media(max-width:900px){.floaters{display:none}}
+
+  .fc-label{font-size:11px;color:var(--muted);letter-spacing:.02em}
+  .fc-value{font-size:26px;font-weight:800;margin-top:2px}
+  .bars{display:flex;align-items:flex-end;gap:7px;height:64px;margin-top:14px}
+  .bars i{flex:1;border-radius:4px 4px 2px 2px;background:rgba(255,255,255,.12);transform-origin:bottom;animation:barPulse 2.8s ease-in-out infinite}
+  .bars i.red{background:linear-gradient(180deg,var(--red),var(--red-deep))}
+  .bars i.blue{background:linear-gradient(180deg,var(--blue),#2c43cc)}
+  .bars i:nth-child(2){animation-delay:.2s}.bars i:nth-child(3){animation-delay:.4s}
+  .bars i:nth-child(4){animation-delay:.6s}.bars i:nth-child(5){animation-delay:.8s}
+  .bars i:nth-child(6){animation-delay:1s}.bars i:nth-child(7){animation-delay:1.2s}
+  @keyframes barPulse{0%,100%{transform:scaleY(1)}50%{transform:scaleY(.72)}}
+  .bars-x{display:flex;justify-content:space-between;font-size:9px;color:var(--muted-2);margin-top:8px}
+
+  .chart-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+  .chart-head b{font-size:20px;font-weight:800}
+  .chart-head .up{font-size:11px;color:#5fd39a;font-weight:700}
+  .chart-svg{width:100%;height:78px;display:block}
+
+  .approve-row{display:flex;align-items:center;gap:11px}
+  .approve-ic{width:38px;height:38px;border-radius:10px;background:var(--red-soft);color:var(--red);display:grid;place-items:center;flex-shrink:0}
+  .approve-row .t{font-size:13px;font-weight:700}
+  .approve-row .s{font-size:11px;color:var(--muted)}
+  .approve-bar{height:6px;border-radius:6px;background:rgba(255,255,255,.09);margin-top:14px;overflow:hidden}
+  .approve-bar i{display:block;height:100%;width:20%;border-radius:6px;background:linear-gradient(90deg,var(--red),#ff5c74);animation:fill 3.4s ease-in-out infinite}
+  @keyframes fill{0%{width:12%}55%{width:88%}100%{width:88%}}
+
+  /* ---------- TICKER ---------- */
+  .ticker{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-2);overflow:hidden;padding:16px 0}
+  .ticker .track{display:flex;gap:0;width:max-content;animation:scrollx 26s linear infinite}
+  .ticker .track span{display:inline-flex;align-items:center;gap:16px;padding:0 28px;font-size:15px;font-weight:700;color:var(--muted);letter-spacing:.01em;white-space:nowrap}
+  .ticker .track span::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--red)}
+  @keyframes scrollx{to{transform:translateX(-50%)}}
+
+  /* ---------- TRUST ---------- */
+  .trust{border-bottom:1px solid var(--line);padding:34px 0;background:var(--bg-2)}
+  .trust .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:22px;align-items:center}
+  .trust .stat b{font-size:28px;font-weight:800;display:block}
+  .trust .stat span{font-size:12.5px;color:var(--muted);letter-spacing:.02em}
+  @media(max-width:640px){.trust .wrap{justify-content:center;text-align:center;gap:26px}}
+
+  /* ---------- SECTION HEAD ---------- */
+  .sec{padding:96px 0}
+  .sec-head{text-align:center;max-width:60ch;margin:0 auto 54px}
+  .sec-head h2{font-size:clamp(30px,5vw,52px);margin:18px auto 0}
+  .sec-head p{color:var(--muted);font-size:17px;margin-top:16px}
+
+  /* reveal on scroll (progressive enhancement) */
+  @supports (animation-timeline: view()){
+    .reveal{animation:revealUp linear both;animation-timeline:view();animation-range:entry 0% cover 32%}
+    @keyframes revealUp{from{opacity:0;transform:translateY(56px)}to{opacity:1;transform:none}}
+  }
+
+  /* ---------- SERVICES ---------- */
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media(max-width:900px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.svc-grid{grid-template-columns:1fr}}
+  .svc{
+    border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(180deg,var(--panel),var(--bg-2));
+    padding:26px 24px;transition:border-color .25s,transform .25s,background .25s;position:relative;overflow:hidden;
+  }
+  .svc:hover{border-color:var(--line-2);transform:translateY(-5px);background:linear-gradient(180deg,var(--panel-2),var(--panel))}
+  .svc::after{content:"";position:absolute;inset:0;opacity:0;transition:opacity .3s;pointer-events:none;background:radial-gradient(420px 160px at 100% 0,var(--red-soft),transparent 70%)}
+  .svc:hover::after{opacity:1}
+  .svc .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--red-soft);color:var(--red);margin-bottom:18px;border:1px solid rgba(216,31,62,.28)}
+  .svc h3{font-size:19px;margin-bottom:8px;letter-spacing:-.02em}
+  .svc p{color:var(--muted);font-size:14.5px;line-height:1.5}
+  .svc .more{display:inline-flex;align-items:center;gap:6px;color:var(--red);font-size:13.5px;font-weight:700;margin-top:16px;transition:gap .25s}
+  .svc:hover .more{gap:11px}
+
+  /* ---------- STICKY STACK FEATURES ---------- */
+  .stack{position:relative}
+  .feature{
+    display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch;
+    border:1px solid var(--line-2);border-radius:var(--radius-lg);overflow:hidden;
+    background:linear-gradient(180deg,var(--panel),var(--bg-2));
+    position:sticky;top:96px;margin-bottom:26px;box-shadow:0 40px 80px -50px #000;
+  }
+  .feature.rev .f-media{order:2}
+  @media(max-width:860px){.feature{grid-template-columns:1fr;position:relative;top:auto}.feature.rev .f-media{order:0}}
+  .f-copy{padding:52px 46px}
+  @media(max-width:560px){.f-copy{padding:34px 26px}}
+  .f-copy h2{font-size:clamp(26px,4vw,42px)}
+  .f-copy p{color:var(--muted);font-size:16.5px;margin-top:18px;max-width:44ch}
+  .f-list{list-style:none;margin:24px 0 30px;display:grid;gap:12px}
+  .f-list li{display:flex;gap:12px;align-items:flex-start;font-size:15px}
+  .f-list .tk{width:22px;height:22px;border-radius:50%;background:var(--red-soft);color:var(--red);display:grid;place-items:center;flex-shrink:0;margin-top:1px}
+  .f-media{position:relative;min-height:440px;overflow:hidden;background:#0c0e22}
+  .f-media .photo{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.06);animation:kenburns 16s ease-in-out infinite alternate}
+  @keyframes kenburns{from{transform:scale(1.06)}to{transform:scale(1.16) translate(-2%,-2%)}}
+  .f-media .tint{position:absolute;inset:0;background:linear-gradient(120deg,rgba(8,10,28,.78),rgba(32,29,81,.35) 55%,rgba(216,31,62,.28))}
+
+  /* gauge widget */
+  .widget{
+    position:absolute;left:26px;bottom:26px;right:26px;
+    background:linear-gradient(160deg,rgba(18,20,45,.94),rgba(10,12,30,.9));
+    border:1px solid var(--line-2);border-radius:16px;padding:20px;
+    box-shadow:0 30px 60px -30px #000;backdrop-filter:blur(8px);display:flex;align-items:center;gap:20px;
+  }
+  .gauge{width:132px;height:84px;position:relative;flex-shrink:0}
+  .gauge svg{width:132px;height:84px;display:block;overflow:visible}
+  .gauge .val{position:absolute;bottom:2px;left:0;right:0;text-align:center}
+  .gauge .val b{font-size:24px;font-weight:800}
+  .gauge .val span{display:block;font-size:10px;color:var(--muted)}
+  .w-meta .t{font-size:13px;color:var(--muted)}
+  .w-meta .big{font-size:19px;font-weight:800;margin-top:2px}
+  .w-meta .row{display:flex;gap:16px;margin-top:12px}
+  .w-meta .row div span{font-size:10px;color:var(--muted);display:block}
+  .w-meta .row div b{font-size:14px}
+
+  /* cash figures widget */
+  .cash-figs{position:absolute;left:26px;right:26px;bottom:26px;display:grid;gap:12px}
+  .cash-fig{
+    background:linear-gradient(160deg,rgba(18,20,45,.94),rgba(10,12,30,.9));border:1px solid var(--line-2);
+    border-radius:14px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;
+    backdrop-filter:blur(6px);box-shadow:0 22px 44px -28px #000;
+    opacity:0;transform:translateX(24px);animation:slideIn .7s ease forwards;
+  }
+  .cash-fig:nth-child(1){animation-delay:.2s}.cash-fig:nth-child(2){animation-delay:.5s}.cash-fig:nth-child(3){animation-delay:.8s}
+  @keyframes slideIn{to{opacity:1;transform:none}}
+  .cash-fig .l{display:flex;align-items:center;gap:12px}
+  .cash-fig .ci{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;font-size:12px;font-weight:800}
+  .cash-fig .ci.r{background:var(--red-soft);color:var(--red)}
+  .cash-fig .ci.g{background:rgba(95,211,154,.14);color:#5fd39a}
+  .cash-fig .n{font-size:13px;font-weight:700}
+  .cash-fig .d{font-size:11px;color:var(--muted)}
+  .cash-fig .amt{font-size:15px;font-weight:800}
+  .cash-fig .amt.pos{color:#5fd39a}
+
+  /* lender comparison bar-race widget */
+  .bar-race{position:absolute;left:26px;right:26px;bottom:26px;background:linear-gradient(160deg,rgba(18,20,45,.94),rgba(10,12,30,.9));border:1px solid var(--line-2);border-radius:16px;padding:18px 20px;backdrop-filter:blur(8px);box-shadow:0 30px 60px -30px #000}
+  .br-title{font-size:12px;color:var(--muted);margin-bottom:14px;display:flex;justify-content:space-between}
+  .br-row{display:flex;align-items:center;gap:12px;margin:11px 0}
+  .br-row .nm{width:96px;font-size:12.5px;font-weight:700;flex-shrink:0}
+  .br-track{flex:1;height:12px;border-radius:8px;background:rgba(255,255,255,.08);overflow:hidden}
+  .br-track i{display:block;height:100%;border-radius:8px;transform-origin:left;transform:scaleX(0);animation:brGrow 1.5s cubic-bezier(.2,.8,.2,1) forwards}
+  .br-row:nth-child(2) i{animation-delay:.15s}.br-row:nth-child(3) i{animation-delay:.3s}.br-row:nth-child(4) i{animation-delay:.45s}.br-row:nth-child(5) i{animation-delay:.6s}
+  .br-row .pc{width:44px;text-align:right;font-size:12.5px;font-weight:800}
+  .br-fill{background:linear-gradient(90deg,#3a3f66,#565c8a)}
+  .br-best i{background:linear-gradient(90deg,var(--red),#ff5c74)}
+  .br-best .nm{color:#fff}.br-best .pc{color:var(--red)}
+  @keyframes brGrow{to{transform:scaleX(1)}}
+
+  /* ---------- PROCESS ---------- */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:800px){.steps{grid-template-columns:1fr}}
+  .step{border:1px solid var(--line);border-radius:var(--radius);padding:30px 26px;background:linear-gradient(180deg,var(--panel),var(--bg-2));position:relative;overflow:hidden}
+  .step .num{font-size:14px;font-weight:800;color:var(--red);width:40px;height:40px;border-radius:11px;border:1px solid rgba(216,31,62,.32);background:var(--red-soft);display:grid;place-items:center;margin-bottom:20px}
+  .step h3{font-size:19px;margin-bottom:10px}
+  .step p{color:var(--muted);font-size:14.5px}
+  .step .line{position:absolute;left:0;bottom:0;height:3px;width:100%;background:linear-gradient(90deg,var(--red),transparent);transform:scaleX(0);transform-origin:left;transition:transform .5s}
+  .step:hover .line{transform:scaleX(1)}
+
+  /* ---------- LENDER MARQUEE ---------- */
+  .lenders{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:40px 0;overflow:hidden;background:var(--bg-2)}
+  .lenders .cap{text-align:center;color:var(--muted);font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:26px}
+  .track-wrap{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+  .marquee{display:flex;gap:14px;width:max-content;animation:scrollx 34s linear infinite}
+  .marquee:hover{animation-play-state:paused}
+  .lender{border:1px solid var(--line);border-radius:12px;padding:16px 26px;white-space:nowrap;color:var(--muted);font-weight:700;font-size:15px;background:var(--panel);transition:color .25s,border-color .25s}
+  .lender:hover{color:var(--text);border-color:var(--line-2)}
+
+  /* ---------- REVIEWS ---------- */
+  .reviews{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media(max-width:800px){.reviews{grid-template-columns:1fr}}
+  .review{border:1px solid var(--line);border-radius:var(--radius);padding:32px 30px;background:linear-gradient(180deg,var(--panel),var(--bg-2));position:relative}
+  .stars{color:var(--red);display:flex}
+  .review blockquote{font-size:17px;line-height:1.6;margin:18px 0 24px}
+  .review .who{display:flex;align-items:center;gap:13px}
+  .review .av{width:44px;height:44px;border-radius:50%;background:linear-gradient(150deg,var(--red),var(--red-deep));display:grid;place-items:center;font-weight:800;color:#fff}
+  .review .who b{font-size:14.5px;display:block}
+  .review .who span{font-size:13px;color:var(--muted)}
+
+  /* ---------- AREAS ---------- */
+  .areas-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:stretch}
+  @media(max-width:820px){.areas-grid{grid-template-columns:1fr}}
+  .areas-map{border:1px solid var(--line-2);border-radius:var(--radius-lg);position:relative;overflow:hidden;min-height:360px}
+  .areas-map .photo{position:absolute;inset:0;background-size:cover;background-position:center;filter:saturate(.7) brightness(.55)}
+  .areas-map .tint{position:absolute;inset:0;background:radial-gradient(120% 120% at 30% 20%,rgba(216,31,62,.28),transparent 46%),linear-gradient(160deg,rgba(8,10,28,.75),rgba(32,29,81,.5))}
+  .areas-map .pin{position:absolute;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#fff;z-index:2}
+  .areas-map .pin i{width:12px;height:12px;border-radius:50%;background:var(--red);box-shadow:0 0 0 6px rgba(216,31,62,.2),0 0 16px var(--red)}
+  .areas-map .pin.p1{left:24%;top:58%}.areas-map .pin.p2{left:52%;top:40%}.areas-map .pin.p3{left:71%;top:66%}
+  .areas-map .ring{position:absolute;left:24%;top:58%;width:120px;height:120px;margin:-60px 0 0 -60px;border:1px solid rgba(216,31,62,.45);border-radius:50%;animation:pulse 3.2s ease-out infinite;z-index:1}
+  @keyframes pulse{0%{transform:scale(.4);opacity:.9}100%{transform:scale(1.7);opacity:0}}
+  .areas-list{display:flex;flex-direction:column;justify-content:center;border:1px solid var(--line);border-radius:var(--radius-lg);padding:34px;background:linear-gradient(180deg,var(--panel),var(--bg-2))}
+  .areas-list h3{font-size:24px;margin-bottom:10px}
+  .areas-list p{color:var(--muted);font-size:15px;margin-bottom:22px}
+  .chips{display:flex;flex-wrap:wrap;gap:9px}
+  .chip{border:1px solid var(--line-2);border-radius:100px;padding:8px 16px;font-size:13.5px;background:rgba(255,255,255,.03)}
+
+  /* ---------- CTA ---------- */
+  .cta{padding:0 0 40px}
+  .cta-card{position:relative;overflow:hidden;border:1px solid var(--line-2);border-radius:var(--radius-lg);padding:64px 40px;text-align:center;background:radial-gradient(120% 160% at 50% -20%,rgba(216,31,62,.34),transparent 55%),linear-gradient(160deg,#14163a,#0a0c1e)}
+  .cta-card h2{font-size:clamp(30px,5vw,50px);max-width:18ch;margin:16px auto 0}
+  .cta-card p{color:var(--muted);font-size:17px;max-width:48ch;margin:16px auto 0}
+  .cta-actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:30px}
+  .cta-tel{margin-top:22px;color:var(--muted);font-size:14px}
+  .cta-tel b{color:var(--text);font-size:16px}
+
+  /* ---------- FOOTER ---------- */
+  footer{border-top:1px solid var(--line);padding:60px 0 40px;background:var(--bg-2);position:relative;overflow:hidden}
+
+  .foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding-top:20px}
+  @media(max-width:760px){.foot-top{grid-template-columns:1fr;gap:30px}}
+  .foot-top p{color:var(--muted);font-size:14px;margin-top:16px;max-width:42ch;line-height:1.6}
+  .foot-col h4{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-2);margin-bottom:16px}
+  .foot-col a{display:block;color:var(--muted);font-size:14.5px;margin-bottom:11px;transition:color .2s}
+  .foot-col a:hover{color:var(--text)}
+  .foot-bottom{border-top:1px solid var(--line);margin-top:44px;padding-top:24px;display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;color:var(--muted-2);font-size:12.5px;line-height:1.6}
+  .foot-bottom .reg{max-width:70ch}
+
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="logo" href="#top" aria-label="Aim Financial Solutions">
+      <svg viewBox="0 0 200 46" xmlns="http://www.w3.org/2000/svg">
+        <text x="0" y="30" font-family="Inter,Arial,sans-serif" font-size="30" font-weight="800" letter-spacing="1" fill="#ffffff">AIM</text>
+        <path d="M78 8 a17 17 0 1 0 0.1 0 Z M78 12 a13 13 0 1 1 -9 22 c9 3 17 -3 18 -13 c0 -5 -4 -9 -9 -9 Z" fill="#d81f3e"/>
+        <text x="0" y="42" font-family="Inter,Arial,sans-serif" font-size="8.5" font-weight="600" letter-spacing="3" fill="#a3a8c6">FINANCIAL SOLUTIONS</text>
+      </svg>
+    </a>
+    <nav class="nav-links">
+      <a href="#services">Finance</a>
+      <a href="#process">How it works</a>
+      <a href="#reviews">Reviews</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:14px">
+      <a class="btn btn-primary" href="#contact">Book a call</a>
+      <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="glow"></div>
+
+  <svg class="circuit left" width="240" height="320" viewBox="0 0 240 320" fill="none">
+    <g stroke="rgba(255,255,255,.16)" stroke-width="1.2">
+      <path id="cl1" d="M0 40 H120 L150 70 H240"/>
+      <path id="cl2" d="M0 100 H90 L120 130 H240"/>
+      <path id="cl3" d="M0 170 H150 L180 200 H240"/>
+      <path id="cl4" d="M0 240 H70 L100 270 H240"/>
+    </g>
+    <circle r="3.2" class="pulse-dot"><animateMotion dur="3s" repeatCount="indefinite"><mpath href="#cl1"/></animateMotion></circle>
+    <circle r="3.2" class="pulse-dot b"><animateMotion dur="4s" repeatCount="indefinite" begin="0.6s"><mpath href="#cl3"/></animateMotion></circle>
+    <circle r="3.2" class="pulse-dot"><animateMotion dur="3.5s" repeatCount="indefinite" begin="1.2s"><mpath href="#cl4"/></animateMotion></circle>
+  </svg>
+  <svg class="circuit right" width="240" height="320" viewBox="0 0 240 320" fill="none">
+    <g stroke="rgba(255,255,255,.16)" stroke-width="1.2">
+      <path id="cr1" d="M0 40 H120 L150 70 H240"/>
+      <path id="cr2" d="M0 100 H90 L120 130 H240"/>
+      <path id="cr3" d="M0 170 H150 L180 200 H240"/>
+      <path id="cr4" d="M0 240 H70 L100 270 H240"/>
+    </g>
+    <circle r="3.2" class="pulse-dot b"><animateMotion dur="3.4s" repeatCount="indefinite" begin="0.3s"><mpath href="#cr2"/></animateMotion></circle>
+    <circle r="3.2" class="pulse-dot"><animateMotion dur="3s" repeatCount="indefinite" begin="0.9s"><mpath href="#cr1"/></animateMotion></circle>
+    <circle r="3.2" class="pulse-dot"><animateMotion dur="4s" repeatCount="indefinite" begin="1.4s"><mpath href="#cr4"/></animateMotion></circle>
+  </svg>
+
+  <div class="wrap hero-inner">
+    <span class="eyebrow"><span class="dot"></span>We quit the banks to fund businesses like yours</span>
+    <h1>Funding built around <span class="thin">your business,</span> not the <span class="red">bank's.</span></h1>
+    <p class="sub">Invoice finance, business loans and asset funding from a broker with 25 years in commercial lending and a panel of 150+ lenders working for you.</p>
+    <div class="hero-cta">
+      <form class="enquiry" onsubmit="return false">
+        <input type="email" placeholder="Enter your business email" aria-label="Business email" />
+        <button class="btn btn-primary">Get my review</button>
+      </form>
+    </div>
+    <div class="hero-badges">
+      <span><span class="tick"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span> No cost</span>
+      <span><span class="tick"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span> No credit searches</span>
+      <span><span class="tick"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span> Approvals in as little as 2 hours</span>
+    </div>
+  </div>
+
+  <div class="floaters" aria-hidden="true">
+    <!-- TOP-LEFT cluster (secondary behind, primary in front) -->
+    <div class="fc cl-tl-2">
+      <div class="approve-row">
+        <div class="approve-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <div><div class="t">Funding approved</div><div class="s">Invoice factoring · £120k</div></div>
+      </div>
+      <div class="approve-bar"><i></i></div>
+      <div class="bars-x" style="margin-top:9px"><span>Application</span><span>live</span></div>
+    </div>
+    <div class="fc cl-tl-1">
+      <div class="fc-label">Available facility</div>
+      <div class="fc-value">£248,500</div>
+      <div class="bars">
+        <i style="height:40%"></i><i class="blue" style="height:70%"></i><i style="height:52%"></i>
+        <i style="height:64%"></i><i class="red" style="height:92%"></i><i style="height:58%"></i><i style="height:46%"></i>
+      </div>
+      <div class="bars-x"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+    </div>
+
+    <!-- BOTTOM-RIGHT cluster (secondary behind, primary in front) -->
+    <div class="fc cl-br-2">
+      <div class="fc-label">Client facility</div>
+      <div class="fc-value" style="font-size:22px">£128,400</div>
+      <div class="mini-prof">
+        <div class="pa">FC</div>
+        <div><div class="pn">F-Comm UK</div><div class="ps">Active facility</div></div>
+      </div>
+      <div class="split">
+        <div><span>Advanced</span><b>£96,300</b></div>
+        <div><span>Available</span><b style="color:#5fd39a">£32,100</b></div>
+      </div>
+    </div>
+    <div class="fc cl-br-1">
+      <div class="row-head">
+        <div><div class="fc-label">Funding secured YTD</div><div class="fc-value">£521K</div></div>
+        <span class="chip-up">+12.8%</span>
+      </div>
+      <svg viewBox="0 0 400 150" preserveAspectRatio="none" style="width:100%;height:150px;display:block;margin-top:6px">
+        <defs>
+          <linearGradient id="area2" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="rgba(216,31,62,.34)"/><stop offset="1" stop-color="rgba(216,31,62,0)"/>
+          </linearGradient>
+        </defs>
+        <path d="M0 108 L57 88 L114 98 L171 58 L228 70 L285 32 L342 44 L400 18 L400 150 L0 150 Z" fill="url(#area2)"/>
+        <path id="hl" d="M0 108 L57 88 L114 98 L171 58 L228 70 L285 32 L342 44 L400 18" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linejoin="round" stroke-dasharray="900" stroke-dashoffset="900"><animate attributeName="stroke-dashoffset" from="900" to="0" dur="2.4s" fill="freeze"/></path>
+        <path d="M0 122 L57 112 L114 100 L171 88 L228 96 L285 64 L342 76 L400 52" fill="none" stroke="#d81f3e" stroke-width="2.2" stroke-linejoin="round" stroke-dasharray="900" stroke-dashoffset="900"><animate attributeName="stroke-dashoffset" from="900" to="0" dur="2.6s" begin="0.2s" fill="freeze"/></path>
+        <path d="M0 134 L57 128 L114 132 L171 116 L228 122 L285 100 L342 108 L400 88" fill="none" stroke="#4f6bff" stroke-width="2.2" stroke-linejoin="round" stroke-dasharray="900" stroke-dashoffset="900"><animate attributeName="stroke-dashoffset" from="900" to="0" dur="2.8s" begin="0.4s" fill="freeze"/></path>
+        <circle r="4.5" fill="#fff" stroke="#d81f3e" stroke-width="2"><animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#hl"/></animateMotion></circle>
+      </svg>
+      <div class="legend">
+        <div><i style="background:#fff"></i> Advances <b style="color:var(--text)">+40%</b></div>
+        <div><i style="background:#d81f3e"></i> Cashflow <b style="color:var(--text)">+47%</b></div>
+        <div><i style="background:#4f6bff"></i> Reserve <b style="color:var(--text)">+13%</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="track">
+    <span>£100m+ funded</span><span>150+ lenders</span><span>Approvals in 2 hours</span><span>25 years' experience</span><span>No credit searches</span><span>FCA regulated</span>
+    <span>£100m+ funded</span><span>150+ lenders</span><span>Approvals in 2 hours</span><span>25 years' experience</span><span>No credit searches</span><span>FCA regulated</span>
+  </div>
+</div>
+
+<!-- TRUST -->
+<section class="trust">
+  <div class="wrap">
+    <div class="stat"><b>£100m+</b><span>Funding arranged for UK SMEs</span></div>
+    <div class="stat"><b>150+</b><span>Lenders on our panel</span></div>
+    <div class="stat"><b>25 yrs</b><span>In commercial finance</span></div>
+    <div class="stat"><b>Since 2019</b><span>Independent &amp; FCA regulated</span></div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="sec" id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="dot"></span>What we arrange</span>
+      <h2>Working capital, sorted properly</h2>
+      <p>One conversation, the whole market. We match your business to the right facility instead of whatever a single bank happens to offer.</p>
+    </div>
+    <div class="svc-grid reveal">
+      <div class="svc"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 14h5"/></svg></div><h3>Invoice Factoring</h3><p>Release up to 90% of an invoice the day you raise it, and let the lender chase payment while you get on with the work.</p><a class="more">Explore factoring →</a></div>
+      <div class="svc"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div><h3>Invoice Discounting</h3><p>Confidential funding against your sales ledger that keeps you in control of your own credit control and customer relationships.</p><a class="more">Explore discounting →</a></div>
+      <div class="svc"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-6h6v6"/></svg></div><h3>Asset Finance</h3><p>Spread the cost of plant, vehicles, machinery and equipment without draining the cash your day-to-day trading relies on.</p><a class="more">Explore asset finance →</a></div>
+      <div class="svc"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9 9.5c0-1.4 1.3-2 3-2s3 .6 3 2-1.3 2-3 2-3 .6-3 2 1.3 2 3 2 3-.6 3-2"/></svg></div><h3>Business Loans</h3><p>Fast, unsecured and secured term loans for growth, cashflow or a specific project, priced on the strength of your business.</p><a class="more">Explore business loans →</a></div>
+      <div class="svc"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 8V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-2"/><path d="M22 12h-6a2 2 0 0 0 0 4h6v-4Z"/></svg></div><h3>Merchant Cash Advance</h3><p>Repay as you trade. Funding that flexes with your card takings, ideal for hospitality, retail and seasonal businesses.</p><a class="more">Explore cash advance →</a></div>
+      <div class="svc"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7l9-4 9 4-9 4-9-4Z"/><path d="M3 7v10l9 4 9-4V7"/><path d="M12 11v10"/></svg></div><h3>Stock &amp; Trade Finance</h3><p>Revolving facilities to buy stock and fund purchase orders, so you can take on bigger contracts without the cashflow squeeze.</p><a class="more">Explore stock finance →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- STICKY STACK FEATURES -->
+<section class="sec" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="dot"></span>Why choose Aim</span>
+      <h2>Money that moves when you do</h2>
+    </div>
+    <div class="stack">
+      <div class="feature">
+        <div class="f-copy">
+          <h2>Keep more of your profit.</h2>
+          <p>We negotiate the whole panel on your behalf, lay every offer side by side and explain the real cost of each so you pick the facility that keeps the most money in your business.</p>
+          <ul class="f-list">
+            <li><span class="tk"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span> No unexplained fees, ever</li>
+            <li><span class="tk"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span> Transparent costings across every lender</li>
+            <li><span class="tk"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span> Full-of-market access, not a single bank</li>
+          </ul>
+          <a class="btn btn-ghost" href="#contact">See what we could save you</a>
+        </div>
+        <div class="f-media">
+          <div class="photo" style="background-image:url('https://www.aim-fs.co.uk/wp-content/uploads/2024/07/building-contractor-financial-services.jpg')"></div>
+          <div class="tint"></div>
+          <div class="widget">
+            <div class="gauge">
+              <svg viewBox="0 0 132 84">
+                <path d="M12 74 A54 54 0 0 1 120 74" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="11" stroke-linecap="round"/>
+                <path d="M12 74 A54 54 0 0 1 89 25" fill="none" stroke="url(#g1)" stroke-width="11" stroke-linecap="round" stroke-dasharray="170" stroke-dashoffset="170"><animate attributeName="stroke-dashoffset" from="170" to="0" dur="1.8s" fill="freeze"/></path>
+                <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#4f6bff"/><stop offset="1" stop-color="#d81f3e"/></linearGradient></defs>
+              </svg>
+              <div class="val"><b>64%</b><span>Avg. cost cut</span></div>
+            </div>
+            <div class="w-meta">
+              <div class="t">Like-for-like saving vs. previous facility</div>
+              <div class="big">Real terms, in writing</div>
+              <div class="row"><div><span>Old cost</span><b>£4,900/mo</b></div><div><span>With Aim</span><b style="color:#5fd39a">£1,760/mo</b></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature rev">
+        <div class="f-copy">
+          <h2>Stop worrying about running out of cash.</h2>
+          <p>We build a funding structure that puts money in your account when you need it, so wages, suppliers, HMRC and you are all paid on time, every time.</p>
+          <ul class="f-list">
+            <li><span class="tk"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span> Fast, straightforward application</li>
+            <li><span class="tk"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span> Free, no-obligation quote</li>
+            <li><span class="tk"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span> Funding approved in as little as 2 hours</li>
+          </ul>
+          <a class="btn btn-ghost" href="#contact">Start a funding review</a>
+        </div>
+        <div class="f-media">
+          <div class="photo" style="background-image:url('https://www.aim-fs.co.uk/wp-content/uploads/2024/09/invoice-factoring.jpg')"></div>
+          <div class="tint"></div>
+          <div class="cash-figs">
+            <div class="cash-fig"><div class="l"><div class="ci r">IN</div><div><div class="n">Invoice advance</div><div class="d">Cleared today</div></div></div><div class="amt pos">+£86,400</div></div>
+            <div class="cash-fig"><div class="l"><div class="ci g">PY</div><div><div class="n">Payroll run</div><div class="d">Covered · 28 staff</div></div></div><div class="amt">£41,200</div></div>
+            <div class="cash-fig"><div class="l"><div class="ci r">HM</div><div><div class="n">VAT &amp; PAYE</div><div class="d">Scheduled · on time</div></div></div><div class="amt">£18,750</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="f-copy">
+          <h2>The whole market, side by side.</h2>
+          <p>We put every offer in front of you — advance rate, fees and terms — then highlight the one that works hardest for your business. No guesswork, no single-bank bias.</p>
+          <ul class="f-list">
+            <li><span class="tk"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span> Compare 150+ lenders in minutes</li>
+            <li><span class="tk"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span> See the real fees before you commit</li>
+            <li><span class="tk"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span> We flag the strongest offer for you</li>
+          </ul>
+          <a class="btn btn-ghost" href="#contact">Compare my options</a>
+        </div>
+        <div class="f-media">
+          <div class="photo" style="background-image:url('https://www.aim-fs.co.uk/wp-content/uploads/2024/07/business-financial-services-devon.jpg')"></div>
+          <div class="tint"></div>
+          <div class="bar-race">
+            <div class="br-title"><span>Advance offered on £250k ledger</span><span>Best match</span></div>
+            <div class="br-row br-best"><div class="nm">Via Aim</div><div class="br-track"><i style="width:100%"></i></div><div class="pc">90%</div></div>
+            <div class="br-row"><div class="nm">Lender B</div><div class="br-track"><i class="br-fill" style="width:80%"></i></div><div class="pc">72%</div></div>
+            <div class="br-row"><div class="nm">High-st bank</div><div class="br-track"><i class="br-fill" style="width:72%"></i></div><div class="pc">65%</div></div>
+            <div class="br-row"><div class="nm">Lender D</div><div class="br-track"><i class="br-fill" style="width:64%"></i></div><div class="pc">58%</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="sec" id="process" style="background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="dot"></span>How it works</span>
+      <h2>Finding the right funder has never been simpler</h2>
+      <p>Three steps, no jargon, no obligation. You stay in control of every decision.</p>
+    </div>
+    <div class="steps reveal">
+      <div class="step"><div class="num">01</div><h3>Begin your journey</h3><p>Tell us about your business, how much you need and what it's for. A short call is usually all it takes to get started.</p><span class="line"></span></div>
+      <div class="step"><div class="num">02</div><h3>Refine your options</h3><p>Our funding review filters 150+ lenders down to the ones genuinely suited to you, saving you time and money.</p><span class="line"></span></div>
+      <div class="step"><div class="num">03</div><h3>We manage the application</h3><p>See each funder, their fees and the insider detail. Pick your favourite and we run the process through to completion.</p><span class="line"></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- LENDER MARQUEE -->
+<section class="lenders">
+  <div class="wrap"><div class="cap">Our panel of 150+ lenders includes</div></div>
+  <div class="track-wrap">
+    <div class="marquee">
+      <span class="lender">Time Finance</span><span class="lender">Novuna</span><span class="lender">Close Brothers</span><span class="lender">Bibby Financial</span><span class="lender">Ultimate Finance</span><span class="lender">Funding Circle</span><span class="lender">iwoca</span><span class="lender">Satago</span><span class="lender">Paragon</span><span class="lender">NatWest Group</span><span class="lender">Fleximize</span><span class="lender">Seneca</span>
+      <span class="lender">Time Finance</span><span class="lender">Novuna</span><span class="lender">Close Brothers</span><span class="lender">Bibby Financial</span><span class="lender">Ultimate Finance</span><span class="lender">Funding Circle</span><span class="lender">iwoca</span><span class="lender">Satago</span><span class="lender">Paragon</span><span class="lender">NatWest Group</span><span class="lender">Fleximize</span><span class="lender">Seneca</span>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="sec" id="reviews">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="dot"></span>Don't take our word for it</span>
+      <h2>Backed by the businesses we fund</h2>
+    </div>
+    <div class="reviews reveal">
+      <div class="review">
+        <div class="stars"><svg width="98" height="18" viewBox="0 0 98 18" fill="currentColor"><path d="M9 0l2.4 5.1 5.6.7-4.1 3.8 1.1 5.6L9 12.3 3.9 15.2 5 9.6.9 5.8l5.6-.7z"/><path d="M29 0l2.4 5.1 5.6.7-4.1 3.8 1.1 5.6L29 12.3l-5.1 2.9 1.1-5.6-4.1-3.8 5.6-.7z"/><path d="M49 0l2.4 5.1 5.6.7-4.1 3.8 1.1 5.6L49 12.3l-5.1 2.9 1.1-5.6-4.1-3.8 5.6-.7z"/><path d="M69 0l2.4 5.1 5.6.7-4.1 3.8 1.1 5.6L69 12.3l-5.1 2.9 1.1-5.6-4.1-3.8 5.6-.7z"/><path d="M89 0l2.4 5.1 5.6.7-4.1 3.8 1.1 5.6L89 12.3l-5.1 2.9 1.1-5.6L82.9 5.8l5.6-.7z"/></svg></div>
+        <blockquote>"Finding funding for our pub group was becoming a real headache. Aim connected us with several lenders, each with different terms, so we could pick the best fit, get funded quickly and focus on scaling."</blockquote>
+        <div class="who"><div class="av">TR</div><div><b>Tom Rogers</b><span>Founder, F-Comm UK</span></div></div>
+      </div>
+      <div class="review">
+        <div class="stars"><svg width="98" height="18" viewBox="0 0 98 18" fill="currentColor"><path d="M9 0l2.4 5.1 5.6.7-4.1 3.8 1.1 5.6L9 12.3 3.9 15.2 5 9.6.9 5.8l5.6-.7z"/><path d="M29 0l2.4 5.1 5.6.7-4.1 3.8 1.1 5.6L29 12.3l-5.1 2.9 1.1-5.6-4.1-3.8 5.6-.7z"/><path d="M49 0l2.4 5.1 5.6.7-4.1 3.8 1.1 5.6L49 12.3l-5.1 2.9 1.1-5.6-4.1-3.8 5.6-.7z"/><path d="M69 0l2.4 5.1 5.6.7-4.1 3.8 1.1 5.6L69 12.3l-5.1 2.9 1.1-5.6-4.1-3.8 5.6-.7z"/><path d="M89 0l2.4 5.1 5.6.7-4.1 3.8 1.1 5.6L89 12.3l-5.1 2.9 1.1-5.6L82.9 5.8l5.6-.7z"/></svg></div>
+        <blockquote>"Aim transformed our financial strategy and let us comfortably fund the extra sales we were targeting, lifting our profit by 50%. Expert guidance and a genuinely personal approach. Highly recommend."</blockquote>
+        <div class="who"><div class="av">CT</div><div><b>Caroline Taylor</b><span>CEO, DtK+</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section class="sec" id="areas" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="dot"></span>Where we work</span>
+      <h2>Devon rooted, funding the whole UK</h2>
+    </div>
+    <div class="areas-grid reveal">
+      <div class="areas-map">
+        <div class="photo" style="background-image:url('https://www.aim-fs.co.uk/wp-content/uploads/2024/07/business-services-devon.jpg')"></div>
+        <div class="tint"></div>
+        <div class="ring"></div>
+        <div class="pin p1"><i></i>Exeter</div>
+        <div class="pin p2"><i></i>Bristol</div>
+        <div class="pin p3"><i></i>London</div>
+      </div>
+      <div class="areas-list">
+        <h3>Based in Exeter, working nationwide</h3>
+        <p>We meet clients across the South West and arrange funding for businesses right across the UK, whatever your sector.</p>
+        <div class="chips"><span class="chip">Exeter</span><span class="chip">Devon</span><span class="chip">Plymouth</span><span class="chip">Cornwall</span><span class="chip">Somerset</span><span class="chip">Bristol</span><span class="chip">South West</span><span class="chip">UK-wide</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <div class="wrap">
+    <div class="cta-card reveal">
+      <span class="eyebrow"><span class="dot"></span>Free funding review</span>
+      <h2>See your options before you commit to anything</h2>
+      <p>Request a free analysis of your business accounts. We'll show your commercial credit rating and where funding could work harder for you. No cost, no searches, no spam.</p>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="#top">Book a call</a>
+        <a class="btn btn-ghost" href="#top">Start my funding review</a>
+      </div>
+      <div class="cta-tel">Or call the team directly · <b>01392 241669</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <a class="logo" href="#top" aria-label="Aim Financial Solutions">
+          <svg viewBox="0 0 200 46" height="34"><text x="0" y="30" font-family="Inter,Arial,sans-serif" font-size="30" font-weight="800" letter-spacing="1" fill="#ffffff">AIM</text><path d="M78 8 a17 17 0 1 0 0.1 0 Z M78 12 a13 13 0 1 1 -9 22 c9 3 17 -3 18 -13 c0 -5 -4 -9 -9 -9 Z" fill="#d81f3e"/><text x="0" y="42" font-family="Inter,Arial,sans-serif" font-size="8.5" font-weight="600" letter-spacing="3" fill="#a3a8c6">FINANCIAL SOLUTIONS</text></svg>
+        </a>
+        <p>Commercial finance brokerage specialising in working capital solutions for UK businesses. Our aim is to understand your aim and build a funding structure that has you set to achieve.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Finance</h4>
+        <a href="#services">Invoice Factoring</a><a href="#services">Invoice Discounting</a><a href="#services">Asset Finance</a><a href="#services">Business Loans</a><a href="#services">Merchant Cash Advance</a>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <a href="#process">How it works</a><a href="#reviews">Reviews</a><a href="#areas">Coverage</a><a href="#contact">Book a call</a><a href="#contact">Funding enquiry</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div class="reg">Aim Financial Solutions Limited is an appointed representative of Legal Webb UK Ltd, authorised and regulated by the FCA (Ref: 913004). Company Registration Number 12043976. We are a broker, not a lender, and may receive payment from a finance provider if you enter into an agreement with them.</div>
+      <div>© 2026 Aim Financial Solutions · Tel 01392 241669</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
