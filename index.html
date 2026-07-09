@@ -361,6 +361,12 @@
   .foot-bottom{border-top:1px solid var(--line);margin-top:44px;padding-top:24px;display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;color:var(--muted-2);font-size:12.5px;line-height:1.6}
   .foot-bottom .reg{max-width:70ch}
 
+  .made-by{border-top:1px solid var(--line);margin-top:40px;padding:44px 0 6px;text-align:center}
+  .made-by .lab{display:block;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-2);font-weight:700;margin-bottom:12px}
+  .made-by a{display:inline-flex;align-items:center;gap:12px;font-size:clamp(28px,5.4vw,56px);font-weight:800;letter-spacing:-.03em;color:var(--text);transition:color .25s,transform .25s}
+  .made-by a:hover{color:var(--red);transform:translateY(-2px)}
+  .made-by .arw{width:.62em;height:.62em;flex-shrink:0}
+
   @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -725,6 +731,10 @@
         <h4>Company</h4>
         <a href="#process">How it works</a><a href="#reviews">Reviews</a><a href="#areas">Coverage</a><a href="#contact">Book a call</a><a href="#contact">Funding enquiry</a>
       </div>
+    </div>
+    <div class="made-by">
+      <span class="lab">Site by</span>
+      <a href="https://chargedstudio.co.uk" target="_blank" rel="noopener">Made by Charged Studio<svg class="arw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
     </div>
     <div class="foot-bottom">
       <div class="reg">Aim Financial Solutions Limited is an appointed representative of Legal Webb UK Ltd, authorised and regulated by the FCA (Ref: 913004). Company Registration Number 12043976. We are a broker, not a lender, and may receive payment from a finance provider if you enter into an agreement with them.</div>
